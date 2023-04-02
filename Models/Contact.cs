@@ -1,4 +1,6 @@
-﻿namespace ExpressContactManager.Models
+﻿using System;
+
+namespace ExpressContactManager.Models
 {
     public class Contact
     {
@@ -19,7 +21,7 @@
         public string Fax { get; set; }
         public string Mobile { get; set; }
         public string WebPage { get; set; }
-        public string BirthDay { get; set; }
+        public DateTime? BirthDay { get; set; }
         public string ContactType { get; set; }
     }
 }

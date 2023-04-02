@@ -2,7 +2,14 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using ExpressContactManager.Models;
+using ExpressContactManager;
+using System.Configuration;
+
+
 
 namespace ExpressContactManager
 {
@@ -18,11 +25,19 @@ namespace ExpressContactManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                           options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            // services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")).EnableRetryOnFailure());
+
             services.AddControllersWithViews();
+            services.AddLogging();
         }
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            app.UseStaticFiles();
+            app.UseRouting();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -34,8 +49,21 @@ namespace ExpressContactManager
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseRouting();
+
+            app.Use(async (context, next) =>
+            {
+                logger.LogInformation($"Request starting {context.Request.Path}");
+
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var db = scope.ServiceProvider.GetService<ApplicationDbContext>();
+                    await db.Database.EnsureCreatedAsync();
+                }
+
+                await next();
+
+                logger.LogInformation($"Request finished {context.Request.Path}");
+            });
 
             app.UseEndpoints(endpoints =>
             {
@@ -46,4 +74,5 @@ namespace ExpressContactManager
         }
     }
 }
+
 

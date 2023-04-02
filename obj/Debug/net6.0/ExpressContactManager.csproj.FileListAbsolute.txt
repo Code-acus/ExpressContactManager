@@ -280,3 +280,10 @@ C:\Users\hrogers.HFR\VisualStudioProjects\ExpressContactManager\obj\Debug\net6.0
 C:\Users\hrogers.HFR\VisualStudioProjects\ExpressContactManager\obj\Debug\net6.0\ExpressContactManager.pdb
 C:\Users\hrogers.HFR\VisualStudioProjects\ExpressContactManager\obj\Debug\net6.0\ExpressContactManager.genruntimeconfig.cache
 C:\Users\hrogers.HFR\VisualStudioProjects\ExpressContactManager\obj\Debug\net6.0\ref\ExpressContactManager.dll
+C:\Users\hrogers.HFR\VisualStudioProjects\ExpressContactManager\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\hrogers.HFR\VisualStudioProjects\ExpressContactManager\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\hrogers.HFR\VisualStudioProjects\ExpressContactManager\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\Users\hrogers.HFR\VisualStudioProjects\ExpressContactManager\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\hrogers.HFR\VisualStudioProjects\ExpressContactManager\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\hrogers.HFR\VisualStudioProjects\ExpressContactManager\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\hrogers.HFR\VisualStudioProjects\ExpressContactManager\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
